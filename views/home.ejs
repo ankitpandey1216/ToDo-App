@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/dce956590c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section id="heading">
+        <div>
+            <h1>
+                TODO App
+            </h1>
+        </div>
+    </section>
+    <section id="option">
+        <form action="/create-todo-list" method="post">
+        <div id="content-container" >
+
+            <div id="description" class="hover1">
+                <label for="desc" class="text" >Description</label>
+                <br>
+                
+               <!-- <input type="text" name = "description"  id="desc" required> -->
+               <textarea name="description" id="desc" cols="50" rows="4" placeholder="what do you need to do?" style="width: 100%; border:none;" required></textarea>
+
+            </div>
+            <div id="category" class="hover1">
+                <label for="cat-list" class="text" >Choose a category</label>
+                <select name="category" id="cat-list" style="width: 100% ;height :60%;border: none;outline: none;" required>
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="school">School</option>
+                    <option value="cleaning">Cleaning</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div id="date" class="hover1">
+                <label for="timing" class="text">Date</label>
+                <input type="date" name="date" id="timing" style="border: none;width:100%;height: 60%;outline: none;" required>
+
+            </div>
+
+        </div>
+
+    
+
+
+    </section>
+    <section id="add-delete">
+        <div id="add-delete-container">
+
+            <div id="add">
+            <button type="submit" id="submit" style="margin-left:30%;"  > 
+                <a href="" style="color: white;margin-left: 15%;">
+                <i class="fa-solid fa-plus"></i>
+            </a></button>
+            
+            <!-- <a href="" style="color: white;">
+                <i class="fa-solid fa-plus"></i>
+            </a> -->
+
+            </div>
+            
+            <!-- <div id="delete">
+            <!-- <a href="/delete-list">
+                
+                <i class="fa-solid fa-trash-can" style="color: white;margin-left: 40%; margin-top: 5%;"></i>
+            </a> -->
+
+            </div> -->
+
+        </div>
+
+    </section>
+</form>
+  
+    <section id="display">
+        <% for(i of toDo){%>
+            <div class="text" id="display-container">
+                
+                <div id ="description-display">
+                    <a href="/delete-list/?id=<%= i._id %>">
+                
+                        <i class="fa-solid fa-trash-can" style="color: black;"></i>
+                    </a>
+        
+                    <p>
+                    <%= i.description %>
+                    </p>
+                </div >
+                   
+                <div id ="category-display">
+                    <p style="margin-top: 8px;">
+                    <%= i.category %>
+                </p>
+                </div>
+                     
+                <div id="date-display">
+                    <span>
+                        
+                    </span>
+                    <p>
+                        <i class="fa-solid fa-calendar-days"></i>
+                        <%= i.date %>
+                    </p>
+                </div>
+
+
+            </div>
+            
+           
+            
+
+            
+            
+            <%}%>
+
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
+   
+    
+</body>
+</html>
